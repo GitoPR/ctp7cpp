@@ -33,6 +33,287 @@ const uint16_t MaxRegions = N_CH_IN * NRegionsPerLink;
   *
   * !!! N.B. 2: make sure to assign every bit of link_out[] data. First byte should be assigned zero.
   */
+typedef struct {
+
+  ap_uint<5> iphi;
+  ap_uint<5> ieta;
+  
+ } my_region_t;
+
+const my_region_t region_lut[252] =
+
+  {
+    {0,0}, 
+    {0,1}, 
+    {0,2},
+    {0,3},
+    {0,4},
+    {0,5},
+    {0,6},
+    {0,7},
+    {0,8},
+    {0,9},
+    {0,10},
+    {0,11},
+    {0,12},
+    {0,13},
+    {0,0},
+    {1,1},
+    {1,2},
+    {1,3},
+    {1,4},
+    {1,5},
+    {1,6},
+    {1,7},
+    {1,8},
+    {1,9},
+    {1,10},
+    {1,11},
+    {1,12},
+    {1,13},
+    {2,0},
+    {2,1},
+    {2,2},
+    {2,3},
+    {2,4},
+    {2,5},
+    {2,6},
+    {2,7},
+    {2,8},
+    {2,9},
+    {2,10},
+    {2,11},
+    {2,12},
+    {2,13},
+    {3,0},
+    {3,1},
+    {3,2},
+    {3,3},
+    {3,4},
+    {3,5},
+    {3,6},
+    {3,7},
+    {3,8},
+    {3,9},
+    {3,10},
+    {3,11},
+    {3,12},
+    {3,13},
+    {4,0},
+    {4,1},
+    {4,2},
+    {4,3},
+    {4,4},
+    {4,5},
+    {4,6},
+    {4,7},
+    {4,8},
+    {4,9},
+    {4,10},
+    {4,11},
+    {4,12},
+    {4,13},
+    {5,0},
+    {5,1},
+    {5,2},
+    {5,3},
+    {5,4},
+    {5,5},
+    {5,6},
+    {5,7},
+    {5,8},
+    {5,9},
+    {5,10},
+    {5,11},
+    {5,12},
+    {5,13},
+    {6,0},
+    {6,1},
+    {6,2},
+    {6,3},
+    {6,4},
+    {6,5},
+    {6,6},
+    {6,7},
+    {6,8},
+    {6,9},
+    {6,10},
+    {6,11},
+    {6,12},
+    {6,13},
+    {7,0},
+    {7,1},
+    {7,2},
+    {7,3},
+    {7,4},
+    {7,5},
+    {7,6},
+    {7,7},
+    {7,8},
+    {7,9},
+    {7,10},
+    {7,11},
+    {7,12},
+    {7,13},
+    {8,0},
+    {8,1},
+    {8,2},
+    {8,3},
+    {8,4},
+    {8,5},
+    {8,6},
+    {8,7},
+    {8,8},
+    {8,9},
+    {8,10},
+    {8,11},
+    {8,12},
+    {8,13},
+    {9,0},
+    {9,1},
+    {9,2},
+    {9,3},
+    {9,4},
+    {9,5},
+    {9,6},
+    {9,7},
+    {9,8},
+    {9,9},
+    {9,10},
+    {9,11},
+    {9,12},
+    {9,13},
+    {10,0},
+    {10,1},
+    {10,2},
+    {10,3},
+    {10,4},
+    {10,5},
+    {10,6},
+    {10,7},
+    {10,8},
+    {10,9},
+    {10,10},
+    {10,11},
+    {10,12},
+    {10,13},
+    {11,0},
+    {11,1},
+    {11,2},
+    {11,3},
+    {11,4},
+    {11,5},
+    {11,6},
+    {11,7},
+    {11,8},
+    {11,9},
+    {11,10},
+    {11,11},
+    {11,12},
+    {11,13},
+    {12,0},
+    {12,1},
+    {12,2},
+    {12,3},
+    {12,4},
+    {12,5},
+    {12,6},
+    {12,7},
+    {12,8},
+    {12,9},
+    {12,10},
+    {12,11},
+    {12,12},
+    {12,13},
+    {13,0},
+    {13,1},
+    {13,2},
+    {13,3},
+    {13,4},
+    {13,5},
+    {13,6},
+    {13,7},
+    {13,8},
+    {13,9},
+    {13,10},
+    {13,11},
+    {13,12},
+    {13,13},
+    {14,0},
+    {14,1},
+    {14,2},
+    {14,3},
+    {14,4},
+    {14,5},
+    {14,6},
+    {14,7},
+    {14,8},
+    {14,9},
+    {14,10},
+    {14,11},
+    {14,12},
+    {14,13},
+    {15,0},
+    {15,1},
+    {15,2},
+    {15,3},
+    {15,4},
+    {15,5},
+    {15,6},
+    {15,7},
+    {15,8},
+    {15,9},
+    {15,10},
+    {15,11},
+    {15,12},
+    {15,13},
+    {16,0},
+    {16,1},
+    {16,2},
+    {16,3},
+    {16,4},
+    {16,5},
+    {16,6},
+    {16,7},
+    {16,8},
+    {16,9},
+    {16,10},
+    {16,11},
+    {16,12},
+    {16,13},
+    {17,0},
+    {17,1},
+    {17,2},
+    {17,3},
+    {17,4},
+    {17,5},
+    {17,6},
+    {17,7},
+    {17,8},
+    {17,9},
+    {17,10},
+    {17,11},
+    {17,12},
+    {17,13},
+  };
+
+// for converting from ieta iphi to iregion index
+class iregion_lut {
+public:
+  constexpr static int rows = 14;
+  constexpr static int cols = 18;
+  ap_uint<32> iRegion_lut[rows][cols];
+
+  iregion_lut() {
+    int count = 1;
+    for (int i = 0; i < rows; i++) {
+      for (int j = 0; j < cols; j++) {
+        iRegion_lut[i][j] = count++;
+      }
+    }
+  }
+};
+
 
 
 typedef ap_uint<8> loop; //loop type(i guess)
@@ -76,8 +357,8 @@ namespace gctobj {
     ap_uint<7> eta;
     ap_uint<5> ieta;
     ap_uint<5> iphi;
-    ap_uint<7> towereta;
-    ap_uint<7> towerphi;
+    ap_uint<7> towerEta;
+    ap_uint<7> towerPhi;
 
     towerMax() {
       energy = 0;
@@ -85,8 +366,8 @@ namespace gctobj {
       eta = 0;
       ieta = 0; 
       iphi= 0; 
-      towereta = 0; 
-      towerphi = 0; 
+      towerEta = 0; 
+      towerPhi = 0; 
     }
   };
 
@@ -94,6 +375,10 @@ namespace gctobj {
     int et;
     int eta;
     int phi;
+    int towerEta;
+    int towerPhi;
+    int ieta;
+    int iphi; 
   } GCTsupertower_t;
 
 
@@ -161,8 +446,11 @@ namespace gctobj {
     GCTsupertower_t bestOf14 = bestOf2(best0to7, best8to13);
 
     x.energy = bestOf14.et;
-    x.phi = bestOf14.phi;
-    x.eta = bestOf14.eta;
+    x.towerPhi = bestOf14.towerPhi;
+    x.towerEta = bestOf14.towerEta;
+    x.ieta = bestOf14.ieta;
+    x.iphi = bestOf14.iphi; 
+    
     return x;
   }
   inline towerMax getTowerMax(GCTsupertower_t temp[nSTEta][nSTPhi]) {
@@ -182,7 +470,11 @@ namespace gctobj {
   }
 
 
-} // namespace gctobj  
+} // namespace gctobj
+
+
+//apparently calo out coordinates header file has initialized this array already.
+
 
 
 // Functions for 3x3 region
@@ -235,7 +527,7 @@ jetInfo getJetValues(gctobj::GCTsupertower_t tempX[nSTEta][nSTPhi], ap_uint<5> s
     for(loop k=0; k<nSTPhi; k++){
 #pragma HLS UNROLL
       if(j== seed_eta1 && k == seed_phi1){
-	std::cout << "seed_eta1 : " << j << "seed_phi1 : " << k << std::endl; 
+	//std::cout << "seed_eta1 : " << j << "seed_phi1 : " << k << std::endl; 
 	for(loop m=0; m<3 ; m++){
 #pragma HLS UNROLL
 	  tmp1 = temp[j+m][k] ;
@@ -248,10 +540,10 @@ jetInfo getJetValues(gctobj::GCTsupertower_t tempX[nSTEta][nSTPhi], ap_uint<5> s
   }
 
   jet_tmp.energy=eta_slice[0] + eta_slice[1] + eta_slice[2];
-  std::cout << "eta_slice[0] : " << eta_slice[0] << std::endl; 
+  /*  std::cout << "eta_slice[0] : " << eta_slice[0] << std::endl; 
   std::cout << "eta_slice[1] : " << eta_slice[1] << std::endl;
   std::cout << "eta_slice[2] : " << eta_slice[2] << std::endl;
-  std::cout << " jet_tmp.energy : " <<  jet_tmp.energy << std::endl; 
+  std::cout << " jet_tmp.energy : " <<  jet_tmp.energy << std::endl; */
   
 
   for(loop i=0; i<nSTEta; i++){
@@ -309,7 +601,7 @@ void algo_unpacked(ap_uint<128> link_in[N_CH_IN], ap_uint<192> link_out[N_CH_OUT
 	/*	std::cout << "nSTEta : " << nSTEta << std::endl; 
 		std::cout<<"nSTPhi : " << nSTPhi << std::endl;  */ 
 
-	gctobj::GCTsupertower_t temp[nSTEta][nSTPhi];
+	//gctobj::GCTsupertower_t temp[nSTEta][nSTPhi];
         regionLoop: for(int iRegion = 0; iRegion < NR_CNTR_REG; iRegion++) {
 #pragma HLS UNROLL
                 if(iRegion > MaxRegions) {
@@ -328,12 +620,12 @@ void algo_unpacked(ap_uint<128> link_in[N_CH_IN], ap_uint<192> link_out[N_CH_OUT
                 centr_region[iRegion].rloc_eta = (region_raw & 0xFFFF) >> 14;   // 2 bit
 		
 		
-		int ieta = iRegion % 14  ; 
-		int iphi = iRegion / 14 ; 
+		//int ieta = iRegion % 14  ; 
+		//int iphi = iRegion / 14 ; 
 		
-		temp[ieta][iphi].eta =  ieta ; // 4*ieta + centr_region[iRegion].rloc_eta; 
-		temp[ieta][iphi].phi = iphi ;  //4*iphi + centr_region[iRegion].rloc_phi;
-		  temp[ieta][iphi].et =  centr_region[iRegion].et;
+		//temp[ieta][iphi].eta =  ieta ; // 4*ieta + centr_region[iRegion].rloc_eta; 
+		//temp[ieta][iphi].phi = iphi ;  //4*iphi + centr_region[iRegion].rloc_phi;
+		//temp[ieta][iphi].et =  centr_region[iRegion].et;
 		
 		//std::cout << "centr_region[iRegion].rloc_eta : " << centr_region[iRegion].rloc_eta << std::endl; 
 		//std::cout << "IRegion : " << iRegion << std::endl;
@@ -350,14 +642,14 @@ void algo_unpacked(ap_uint<128> link_in[N_CH_IN], ap_uint<192> link_out[N_CH_OUT
         }
 	//for(loop i = 0 ; i < nSTEta ; i ++) {std::cout << "temp["<<i<< "][17].et : " << temp[i][17].et <<std::endl;  }
 	
-	  gctobj::towerMax maxTower  = gctobj::getTowerMax(temp);
+	//gctobj::towerMax maxTower  = gctobj::getTowerMax(temp);
 	       
 	  
 	  /*std::cout << "algorithm max et = " << maxTower.energy <<std::endl;
 	  std::cout << "algorithm eta = " << maxTower.eta << std::endl;
 	  std::cout <<"algorithm phi = " << maxTower.phi << "\n" << std::endl; */
 	  
-	  jetInfo test_jet; 
+	/* 	jetInfo test_jet; 
 	  
 	  test_jet.etaMax = maxTower.eta; 
 	  test_jet.phiMax = maxTower.phi;
@@ -368,9 +660,9 @@ void algo_unpacked(ap_uint<128> link_in[N_CH_IN], ap_uint<192> link_out[N_CH_OUT
 	  tmp_jet = getJetValues(temp,maxTower.eta, maxTower.phi);
 	  test_jet.energy = tmp_jet.energy; 
 	  
-	  /*std::cout << "test_jet.energy : " << test_jet.energy << std::endl; 
+	  std::cout << "test_jet.energy : " << test_jet.energy << std::endl; 
 	  std::cout << "test_jet.phi : " << test_jet.phiMax << std::endl; 
-	  std::cout << "test_jet.eta : "<< test_jet.etaMax <<  "\n"<<std:: endl;*/
+	  std::cout << "test_jet.eta : "<< test_jet.etaMax <<  "\n"<<std:: endl; */
 
 	  
         // Anomlay detection algorithm
@@ -454,7 +746,8 @@ void algo_unpacked(ap_uint<128> link_in[N_CH_IN], ap_uint<192> link_out[N_CH_OUT
 
 ////////////////////////////////////////////////////////////
         et_3by3(pu_sub_et_calo, et_3by3_calo);
-
+	
+	gctobj::GCTsupertower_t temp[nSTEta][nSTPhi]; //create temp region matrix for finding max jet et. 
         for (int idx = 0; idx < NR_CNTR_REG; idx++)
         {
 #pragma HLS UNROLL
@@ -463,8 +756,70 @@ void algo_unpacked(ap_uint<128> link_in[N_CH_IN], ap_uint<192> link_out[N_CH_OUT
                 centr_region_pu_sub[idx].tau_veto = centr_region[idx].tau_veto;
                 centr_region_pu_sub[idx].rloc_eta = centr_region[idx].rloc_eta;
                 centr_region_pu_sub[idx].rloc_phi = centr_region[idx].rloc_phi;
-        }
+		
+		int ieta = region_lut[idx].ieta  ; // make a look up table converting idx to ieta and iphi
+                int iphi = region_lut[idx].iphi ;
 
+		
+		calo_coor_t calo_coor_event = calo_coor[idx];
+		// std::cout << "calo_coor_event.side : " << calo_coor_event.side << std::endl;
+
+		int towerEta;
+		int towerPhi = calo_coor_event.iphi + centr_region_pu_sub[idx].rloc_phi;
+		if (calo_coor_event.side > 0){
+		  towerEta = -(calo_coor_event.ieta + centr_region_pu_sub[idx].rloc_eta) ;
+		  
+		}
+		else{
+		  towerEta = calo_coor_event.ieta + centr_region_pu_sub[idx].rloc_eta;
+		  
+		}
+
+		
+		temp[ieta][iphi].ieta =  ieta ; // 4*ieta + centr_region[iRegion].rloc_eta;
+                temp[ieta][iphi].iphi = iphi ;  //4*iphi + centr_region[iRegion].rloc_phi;
+                temp[ieta][iphi].et =  centr_region_pu_sub[idx].et;
+		temp[ieta][iphi].towerEta = towerEta;
+		temp[ieta][iphi].towerPhi = towerPhi;
+		//temp[ieta][iphi].eta = getUCTTowerEta(towerEta);
+		//temp[ieta][iphi].phi = getUCTTowerPhi(towerPhi);
+		
+		  }
+
+
+	
+	for(int i = 0 ; i< 2 ; i++ ) {
+	gctobj::towerMax maxTower  = gctobj::getTowerMax(temp);
+
+        std::cout << "maxTower.energy : " << maxTower.energy << "\n" << std::endl;
+
+	// testing out iregiont_t
+
+	/*iregion_t iRegion;
+
+	for (int k = 0; k < 18; k++) {
+	  for(int j = 0; j< 14; j ++){
+
+	    std::cout << "iRegion[" << j << "][" << k << "] :" << iRegion[j][k] << std::endl;  
+	  }
+	  }*/
+	jetInfo tmp_jet;
+	
+	
+	tmp_jet = getJetValues(temp,maxTower.ieta, maxTower.iphi);
+	
+	
+        tmp_jet.etaMax = maxTower.towerEta;
+	tmp_jet.phiMax = maxTower.towerPhi;
+	
+	std::cout << "test_jet.energy : " << tmp_jet.energy << std::endl;
+	std::cout << "test_jet.phi : " << tmp_jet.phiMax << std::endl;
+	std::cout << "test_jet.eta : "<< tmp_jet.etaMax <<  "\n"<<std:: endl;
+	}	
+
+
+
+	  
 ////////////////////////////////////////////////////////////
         // Prepare algorithm results
         boostedjet(algo_config.jet_seed, centr_region_pu_sub, et_3by3_calo, et_jet_boosted, rIdx_boostedjet);
