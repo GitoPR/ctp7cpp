@@ -791,7 +791,7 @@ void algo_unpacked(ap_uint<128> link_in[N_CH_IN], ap_uint<192> link_out[N_CH_OUT
 	for(int i = 0 ; i< 2 ; i++ ) {
 	gctobj::towerMax maxTower  = gctobj::getTowerMax(temp);
 
-        std::cout << "maxTower.energy : " << maxTower.energy << "\n" << std::endl;
+        //std::cout << "maxTower.energy : " << maxTower.energy << "\n" << std::endl;
 
 	// testing out iregiont_t
 
@@ -812,9 +812,9 @@ void algo_unpacked(ap_uint<128> link_in[N_CH_IN], ap_uint<192> link_out[N_CH_OUT
         tmp_jet.etaMax = maxTower.towerEta;
 	tmp_jet.phiMax = maxTower.towerPhi;
 	
-	std::cout << "test_jet.energy : " << tmp_jet.energy << std::endl;
-	std::cout << "test_jet.phi : " << tmp_jet.phiMax << std::endl;
-	std::cout << "test_jet.eta : "<< tmp_jet.etaMax <<  "\n"<<std:: endl;
+	//std::cout << "test_jet.energy : " << tmp_jet.energy << std::endl;
+	//std::cout << "test_jet.phi : " << tmp_jet.phiMax << std::endl;
+	//std::cout << "test_jet.eta : "<< tmp_jet.etaMax <<  "\n"<<std:: endl;
 	}	
 
 
@@ -873,10 +873,10 @@ void algo_unpacked(ap_uint<128> link_in[N_CH_IN], ap_uint<192> link_out[N_CH_OUT
             int test1 = 0x007F & calo_coor[idx_srt].iphi + so_out_jet_boosted[idx].range(25, 19);
             int iphi = !signbit(test1 - 72) ? (0x007F & test1 - 0x0048) : (0x007F & test1);
             tmp_link_out[0].range(bHiPhi, bLoPhi) = iphi_lut[iphi];
-            std::cout<<"jet number: "<<idx<<"\t"<<"jet et: "<<so_out_jet_boosted[idx].range(9, 0)<<"\t"<<"eta: "<<ieta<<"\t"<<"phi: "<<iphi<<std::endl;
+	    //  std::cout<<"jet number: "<<idx<<"\t"<<"jet et: "<<so_out_jet_boosted[idx].range(9, 0)<<"\t"<<"eta: "<<ieta<<"\t"<<"phi: "<<iphi<<std::endl;
 	    
        }
-	std::cout << "End of run" << "\n" << std::endl; 
+	//std::cout << "End of run" << "\n" << std::endl; 
 	
         for(int i = 0; i < N_CH_OUT; i++){
 #pragma HLS unroll
